@@ -6,16 +6,17 @@ const initialGameBoard = [
   [null, null, null],
 ];
 
-export default function GameBoard() {
+export default function GameBoard({ onSelectSquare, activePlayerSymbol }) {
   const [gameBoard, setGameBoard] = useState(initialGameBoard);
 
   function gameBoardBtnHandler(rowIndex, colIndex) {
     setGameBoard((prevGameBoard) => {
       // Create a deep copy of the previous game board
       const updatedBoard = prevGameBoard.map((innerArray) => [...innerArray]);
-      updatedBoard[rowIndex][colIndex] = "X";
+      updatedBoard[rowIndex][colIndex] = activePlayerSymbol;
       return updatedBoard;
     });
+    onSelectSquare();
   }
 
   return (
