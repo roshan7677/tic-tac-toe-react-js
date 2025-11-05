@@ -349,3 +349,78 @@ ol {
     transform: scale(1);
   }
 }
+
+/* ----- Added styles for game status, restart button, winning cells ----- */
+
+#status-and-log {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+#status {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+  color: #f0e7c0;
+}
+
+#status strong {
+  color: #fcd256;
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+
+/* Restart button (prominent, high-contrast filled style) */
+#status button.restart {
+  font-size: 1rem;
+  /* Filled gold background so the button is visible against both dark and light areas */
+  background: linear-gradient(90deg, #fcd256 0%, #f6e35a 100%);
+  border: 2px solid rgba(0, 0, 0, 0.08);
+  color: #2b2a00;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, opacity 0.12s ease;
+  box-shadow: 0 8px 22px rgba(248, 200, 30, 0.18);
+  font-weight: 700;
+}
+
+#status button.restart:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(248, 200, 30, 0.28);
+}
+
+#status button.restart:active {
+  transform: translateY(0) scale(0.995);
+}
+
+/* keyboard focus for accessibility */
+#status button.restart:focus {
+  outline: 3px solid rgba(252, 210, 86, 0.25);
+  outline-offset: 2px;
+}
+
+/* Disabled board buttons */
+#game-board button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  filter: grayscale(0.05);
+}
+
+/* Highlight winning cells */
+#game-board button.winning {
+  background: linear-gradient(90deg, #f6e35a 0%, #f8c031 100%);
+  color: #2b2a00;
+  box-shadow: 0 6px 18px rgba(248, 200, 30, 0.35), inset 0 -6px 12px rgba(0,0,0,0.12);
+  transform: scale(1.02);
+}
+
+/* Slight animation to draw attention to winning cells */
+#game-board button.winning {
+  animation: pulse 1.2s infinite ease-in-out;
+}
+
